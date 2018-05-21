@@ -1,0 +1,17 @@
+.title{
+    text-align: center;
+}
+
+.display{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border: black solid 1px;
+    text-align: center
+}
+
+.input{
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+}
