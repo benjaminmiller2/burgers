@@ -14,21 +14,21 @@ let db = require("../models")
 module.exports = function(app) {
 
   // GET route for getting all of the todos
-  app.get("/api/burgers", function(req, res) {
+  app.get("/api/Burgers", function(req, res) {
     
-    db.Burger.findAll({}).then(function(results) {
+    db.Burger.findAll({}).then(function(dbBurger) {
       // results are available to us inside the .then
-      res.json(results)
+      res.json(dbBurger)
     });
 
   });
 
   // POST route for saving a new todo. We can create a todo using the data on req.body
-  app.post("/api/burgers", function(req, res) {
-
+  app.post("/api/Burgers", function(req, res) {
+console.log(res);
     db.Burger.create({
-      burger_name: req.body.text,
-      devoured: req.body.complete
+      burger_name: req.body.burger_name,
+      devoured: req.body.devoured
     }).then(function(dbBurger) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbBurger);
@@ -38,7 +38,7 @@ module.exports = function(app) {
 
   // DELETE route for deleting todos. We can access the ID of the todo to delete in
   // req.params.id
-  app.delete("/api/burgers/:id", function(req, res) {
+  app.delete("/api/Burgers/:id", function(req, res) {
     db.Burger.destroy({
       where: {
         id: req.params.id
@@ -50,7 +50,7 @@ module.exports = function(app) {
   });
 
   // PUT route for updating todos. We can access the updated todo in req.body
-  app.put("/api/burgers", function(req, res) {
+  app.put("/api/Burgers", function(req, res) {
     db.Burger.update({
       burger_name: req.body.text,
       devoured: req.body.complete
