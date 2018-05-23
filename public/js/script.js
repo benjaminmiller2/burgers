@@ -1,4 +1,5 @@
 $(function(){
+let dataId;
 
 function add(){
         
@@ -12,6 +13,15 @@ function add(){
     });
 };
 
+function devour(){
+
+    $.ajax({
+        method: "PUT",
+        url: "/api/Burgers",
+        data: { id: dataId}
+    }).then(show());
+};
+
 function show(){
     $.get("/api/Burgers", function(Burger){
         if(Burger.length !== 0){
@@ -20,7 +30,7 @@ function show(){
 
                 if(Burger[i].devoured === false){
 
-                    div.append("<h3>" + Burger[i].burger_name + "</h3><button class='devourButton' data-id=" + Burger[i].id +">'Devour it!'</button>");
+                    div.append("<h3>" + Burger[i].burger_name + "</h3><button class='js-devourButton' data-id=" + Burger[i].id +">'Devour it!'</button>");
 
                     $("#order-box").append(div);
                 }
@@ -34,27 +44,23 @@ function show(){
         }
     }).then(function(results){
         
-        $(".devourButton").on("click", function(event){
+        $(".js-devourButton").on("click", function(event){
+
             event.preventDefault();
-            console.log($(this).data('id'))
-         })
+            dataId = $(this).data('id');
+            console.log(dataId);
+
+            devour();
+            //.then(function(req, res){
+            //    show();
+           // });
+        })
     })
 };
 
-function devour(Burger){
-    $.put("/api/Burgers/:id", function(Burger){
-    }).then(show)
-}
-
 $("#submitButton").on("click", function(event){
-
     event.preventDefault();
     add();
-
-
 });
-
-
-
 
 })
