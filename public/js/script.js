@@ -1,6 +1,8 @@
 $(document).ready(function(){
-let id;
-let name;
+//let id;
+//let name;
+let Data;
+
     function post(){
         
         let Burger = {
@@ -31,15 +33,33 @@ let name;
 
                 event.preventDefault();
                 //console.log(data);
-                id = $(this).data('id');
-                name = data[data.length-1].burger_name;
-                //console.log(id, name);
-               devour(id, name);
+                
+                let id = $(this).data('id');
+                let name = data[id-1].burger_name;
+                console.log(id, name);
+                
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/Burgers",
+                    data: { id: id}
+                })
+                .then(function(data){
+                    //console.log(name)
+                    //console.log(id);
+                $('#'+id).remove();
+                let div = $("<div id=" + id +">");
+        
+                div.append("<h3>" + name + " 'has been eaten'</h3>");
+        
+                $("#devoured-box").append(div);
+                })
+
             })
         })
     };
 
     function devour(){
+            console.log(result);
 
         $.ajax({
             method: "PUT",
@@ -50,7 +70,7 @@ let name;
             console.log(name)
             //console.log(id);
         $('#'+id).remove();
-        let div = $("<div>");
+        let div = $("<div id=" + id +">");
 
         div.append("<h3>" + name + " 'has been eaten'</h3>");
 
