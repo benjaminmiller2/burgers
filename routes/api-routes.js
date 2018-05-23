@@ -5,9 +5,6 @@
 // Dependencies
 // =============================================================
 
-// grab the orm from the config
-// (remember: connection.js -> orm.js -> route file)
-
 let db = require("../models")
 // Routes
 // =============================================================
@@ -25,7 +22,7 @@ module.exports = function(app) {
 
   // POST route for saving a new todo. We can create a todo using the data on req.body
   app.post("/api/Burgers", function(req, res) {
-console.log(res);
+
     db.Burger.create({
       burger_name: req.body.burger_name,
       devoured: req.body.devoured
@@ -50,13 +47,12 @@ console.log(res);
   });
 
   // PUT route for updating todos. We can access the updated todo in req.body
-  app.put("/api/Burgers", function(req, res) {
+  app.put("/api/Burgers/:id", function(req, res) {
     db.Burger.update({
-      burger_name: req.body.text,
-      devoured: req.body.complete
+      devoured: true
     }, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     })
       .then(function(dbBurger) {
