@@ -13,25 +13,26 @@
     crossorigin="anonymous"></script>   
     <script src="./js/script.js"></script>
 </head>
-<body>
+<body class="body">
     <div class='title'>
         <h1>Eat-Da-Burger</h1>
-        <h2>Menu</h2>
+        
     </div>
 
     <div class='display' id='display-box'>
 
-        <div id='output-box'>
-            <div id='order-box'></div>
-            <div id='devoured-box'></div>
-        </div>
-    
-        <divid='input-box'>    
+        <div class='input' id='input-box'>    
             <form>
-                <p>Burger Name: </p>
-                <input type='text' name='burger name' id='burger_name' class=input >
-                <input type='submit' id='submitButton'>
+                <h2 class='redText'>Welcome to Eat-Da-Burger's self-service station!</h2> 
+                <h3 class='redText'>Please place your order here:</h3>
+                <input type='text' name='burger name' id='order' class=input >
+                <input type='submit' class='button' id='submitButton'>
             </form>
+        </div>
+
+        <div id='output-box' class='output'>
+            <div id='order-box' class='ordered'></div>
+            <div id='devoured-box' class='devoured'></div>
         </div>
 
     </div>

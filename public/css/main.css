@@ -1,17 +1,70 @@
+.body{
+    background-color: #dd1021;
+    color: #ffc300;
+}
 .title{
     text-align: center;
 }
 
 .display{
-    width: 50%;
+    width: 75%;
     margin-right: auto;
     margin-left: auto;
-    border: black solid 1px;
-    text-align: center
+    border: #ffc300 solid 1px;
+    text-align: center;
+    align-content: center;
+    background-color: rgb(247, 247, 211);
 }
 
 .input{
     width: 75%;
     padding: 10px;
     margin: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.output{
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ordered{
+    width: 50%;
+}
+
+.devoured{
+    width: 50%;
+}
+
+.burger{
+    width: 80%;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    border: #ffc300 solid 2px;
+    background-color:#dd1021;
+    text-align: center;
+    word-wrap: break-word;
+    padding: 10px;
+}
+.redText{
+    color:#dd1021;
+}
+
+.button{
+    border: #ffc300 solid 1px;
+    border-radius: 50px;
+    background-color: #dd1021;
+    color: #ffc300;
+}
+.devourButton{
+    border: #dd1021 solid 1px;
+    border-radius: 50px;
+    background-color: #ffc300;
+    color: #dd1021;
 }
